@@ -5,22 +5,41 @@ import Navigation from "../components/navigation/Navigation";
 import {makeStyles} from "@material-ui/core/styles";
 import HeroHomePage from "../components/heros/heroHomePage/HeroHomePage";
 import Container from '@material-ui/core/Container';
+import {AnimatePresence, motion} from "framer-motion"
+import {listVariants} from "../animations";
+import HeaderSimpleCentered from "../components/headers/HeaderSimpleCentered";
 
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // background: 'linear-gradient(135deg, #edc0bf 0,#c4caef 58%)',
-    // minHeight: '100vh'
+  section: {
+    display: "flex",
+    alignItems: "center",
+    height: '100vh'
   },
-}));
+}))
+
 
 export default function Home() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div>
+      <motion.div
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        variants={listVariants}
+      >
         <Container maxWidth="lg">
-            <HeroHomePage />
+          <HeroHomePage />
+
+
+
+        </Container>
+      </motion.div>
+
+        <Container maxWidth="lg">
+            <HeaderSimpleCentered />
         </Container>
 
       <br/>

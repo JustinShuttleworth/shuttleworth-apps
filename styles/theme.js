@@ -5,13 +5,14 @@ import green from '@material-ui/core/colors/green';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: '#31708e',
+      mainGradient: "linear-gradient(to right, #0e76a8, #5389b5)",
     },
     secondary: {
-      main: green[500],
+      main: '#414042',
     },
     background: {
-      default: '#f2f2f2'
+      default: '#f7f9fb'
     }
   },
 });

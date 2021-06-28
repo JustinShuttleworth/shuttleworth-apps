@@ -12,6 +12,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import {Hidden} from "@material-ui/core";
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
+import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
   btnRoot: {
@@ -93,8 +94,8 @@ export default function Navigation() {
         <div className={classes.btnRoot}>
           <Button className={classes.btn}>Portfolio</Button>
           <Button className={classes.btn}>Blog</Button>
-          <Button className={classes.btn}>About</Button>
-          <Button className={classes.btnActive}>Home</Button>
+          <Link href={'/about'}><Button className={classes.btn}>About</Button></Link>
+          <Link href={'/'}><Button className={classes.btnActive}>Home</Button></Link>
         </div>
 
         <div className={classes.logoRoot}>
@@ -124,7 +125,7 @@ export default function Navigation() {
         </div>
 
         <div className={classes.socialRoot}>
-          <div><IconButton className={classes.circleBtn} onClick={toggleDrawer('right', true)}><MenuRoundedIcon style={{ color: '#0e76a8' }} /></IconButton></div>
+          <IconButton style={{background: '#ffffff'}} className={classes.circleBtn} onClick={toggleDrawer('right', true)}><MenuRoundedIcon style={{ color: '#0e76a8'}} /></IconButton>
         </div>
 
         <SwipeableDrawer

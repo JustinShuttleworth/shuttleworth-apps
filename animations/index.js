@@ -9,15 +9,15 @@ export const listVariants = {
     transition: {
       duration: 0.5,
       ease: [0.48, 0.15, 0.25, 0.96],
-      staggerChildren: 0.1,
-      delayChildren: 0.2
+      staggerChildren: .25,
+      delayChildren: 0.5
     }
   },
   exit: {
     opacity: 0,
     y:30,
-    transition: {duration: .25,}
-    // transition: { staggerChildren: 0.1, staggerDirection: -1 }
+    // transition: {duration: .25,}
+    transition: { staggerChildren: 0.1, staggerDirection: -1 }
   }
 };
 export const itemVariants = {

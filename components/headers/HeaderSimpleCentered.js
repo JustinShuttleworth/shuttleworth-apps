@@ -3,10 +3,9 @@ import {Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Image from "next/image";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import {useInView} from "react-intersection-observer"
-import {motion, useAnimation} from "framer-motion";
-import {listVariants} from "../../animations";
+import {motion} from "framer-motion";
+import {itemVariants, listVariants} from "../../animations";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,59 +33,45 @@ const useStyles = makeStyles((theme) => ({
 
 const HeaderSimpleCentered = () => {
   const classes = useStyles();
-  // const animation = useAnimation();
-  const [animation, setAnimation] = useState("initial")
-  const [ref, inView, entry] = useInView({ threshold: 0.1 });
-
-  useEffect(() => {
-      if (inView) {
-        setAnimation("enter")
-        // animation.start("enter");
-      }
-      // else {
-      //   animation.start("exit");
-      // }
-    }, [inView]);
-
-  console.log(inView)
-  console.log(animation)
+  const [ref, inView] = useInView({triggerOnce: true });
 
   return (
     <motion.div
       ref={ref}
       className={classes.root}
-      animate={animation}
+      animate={inView ? "enter" : false}
       initial="initial"
       exit={'exit'}
       variants={listVariants}
     >
       <div>
-      <Typography variant={"h3"} align={"center"} gutterBottom>A website that is as unique and beautiful <br/>as your business</Typography>
-      <Typography variant={"h6"} align={"center"} className={classes.blurb}>
-        Our websites help you sell with a design that reflects your brand, business information
-        organized in a way that gives you visibility, and an intuitive user experience that
-        simplifies your website.
-      </Typography>
+        <Typography variant={"h3"} align={"center"} gutterBottom>A website that is as unique and beautiful <br/>as your business</Typography>
+        <Typography variant={"h6"} align={"center"} className={classes.blurb}>
+          Our websites help you sell with a design that reflects your brand, business information
+          organized in a way that gives you visibility, and an intuitive user experience that
+          simplifies your website.
+        </Typography>
 
-      <Grid container spacing={5}>
-        <Grid item md={4} sm={12} xs={12} style={{display: "flex", justifyContent: "center"}}>
-          <div className={classes.imageCard}>
-            <Image className={classes.img} src={'/clothing-shop.svg'} height={500} width={320} objectFit="cover"/>
-          </div>
-        </Grid>
+        <Grid container spacing={5}>
+          <Grid item md={4} sm={12} xs={12} style={{display: "flex", justifyContent: "center"}}>
+            <motion.div variants={itemVariants} className={classes.imageCard}>
+              <Image className={classes.img} src={'/clothing-shop.svg'} height={500} width={320} objectFit="cover"/>
+            </motion.div>
+          </Grid>
 
-        <Grid item md={4} sm={12} xs={12}>
-          <div className={classes.imageCard}>
-            <Image className={classes.img} src={'/white-storefront.svg'} height={500} width={320} objectFit="cover"/>
-          </div>
-        </Grid>
+          <Grid item md={4} sm={12} xs={12}>
+            <motion.div variants={itemVariants} className={classes.imageCard}>
+              <Image className={classes.img} src={'/white-storefront.svg'} height={500} width={320} objectFit="cover"/>
+            </motion.div>
+          </Grid>
 
-        <Grid item md={4} sm={12} xs={12}>
-          <div className={classes.imageCard}>
-            <Image className={classes.img} src={'/flower-shop.svg'} height={500} width={320} objectFit="cover"/>
-          </div>
+          <Grid item md={4} sm={12} xs={12}>
+            <motion.div variants={itemVariants} className={classes.imageCard}>
+              <Image className={classes.img} src={'/flower-shop.svg'} height={500} width={320} objectFit="cover"/>
+            </motion.div>
+          </Grid>
         </Grid>
-      </Grid></div>
+      </div>
 
     </motion.div>
   )

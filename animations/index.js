@@ -10,7 +10,7 @@ export const listVariants = {
       duration: 0.5,
       ease: [0.48, 0.15, 0.25, 0.96],
       staggerChildren: .25,
-      delayChildren: 0.5
+      delayChildren: 0.75
     }
   },
   exit: {
@@ -24,16 +24,16 @@ export const itemVariants = {
   initial: {
     y: 50,
     opacity: 0,
-    transition: {
-      y: { stiffness: 1000 }
-    }
+    // transition: {
+    //   y: { stiffness: 1000 }
+    // }
   },
   enter: {
     y: 0,
     opacity: 1,
-    transition: {
-      y: { stiffness: 1000, velocity: -100 }
-    }
+    // transition: {
+    //   y: { stiffness: 1000, velocity: -100 }
+    // }
   },
   exit: {
     y: 50,

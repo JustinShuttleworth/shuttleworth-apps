@@ -9,8 +9,8 @@ import {itemVariants, listVariants} from "../../animations";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: "flex",
-    alignItems: "center",
+    // display: "flex",
+    // alignItems: "center",
     height: '100vh'
   },
   imageCard: {
@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
     background: '#414042',
     alignItems: "center",
     justifyContent: "center",
-    width: 320
+    width: 320,
+    // flex: 1
   },
   img: {
     borderRadius: '1rem',
@@ -39,40 +40,39 @@ const HeaderSimpleCentered = () => {
     <motion.div
       ref={ref}
       className={classes.root}
-      animate={inView ? "enter" : false}
+      animate={inView ? "enter" : "initial"}
       initial="initial"
       exit={'exit'}
       variants={listVariants}
     >
-      <div>
+      <motion.div variants={itemVariants}>
         <Typography variant={"h3"} align={"center"} gutterBottom>A website that is as unique and beautiful <br/>as your business</Typography>
         <Typography variant={"h6"} align={"center"} className={classes.blurb}>
           Our websites help you sell with a design that reflects your brand, business information
           organized in a way that gives you visibility, and an intuitive user experience that
           simplifies your website.
         </Typography>
+      </motion.div>
 
-        <Grid container spacing={5}>
-          <Grid item md={4} sm={12} xs={12} style={{display: "flex", justifyContent: "center"}}>
-            <motion.div variants={itemVariants} className={classes.imageCard}>
-              <Image className={classes.img} src={'/clothing-shop.svg'} height={500} width={320} objectFit="cover"/>
-            </motion.div>
-          </Grid>
-
-          <Grid item md={4} sm={12} xs={12}>
-            <motion.div variants={itemVariants} className={classes.imageCard}>
-              <Image className={classes.img} src={'/white-storefront.svg'} height={500} width={320} objectFit="cover"/>
-            </motion.div>
-          </Grid>
-
-          <Grid item md={4} sm={12} xs={12}>
-            <motion.div variants={itemVariants} className={classes.imageCard}>
-              <Image className={classes.img} src={'/flower-shop.svg'} height={500} width={320} objectFit="cover"/>
-            </motion.div>
-          </Grid>
+      <Grid container spacing={5}>
+        <Grid item md={4} sm={12} xs={12} style={{display: "flex", justifyContent: "center"}}>
+          <motion.div variants={itemVariants} className={classes.imageCard}>
+            <Image className={classes.img} src={'/clothing-shop.png'} height={500} width={320} objectFit="cover"/>
+          </motion.div>
         </Grid>
-      </div>
 
+        <Grid item md={4} sm={12} xs={12}>
+          <motion.div variants={itemVariants} className={classes.imageCard}>
+            <Image className={classes.img} src={'/white-storefront.png'} height={500} width={320} objectFit="cover"/>
+          </motion.div>
+        </Grid>
+
+        <Grid item md={4} sm={12} xs={12}>
+          <motion.div variants={itemVariants} className={classes.imageCard}>
+            <Image className={classes.img} src={'/flower-shop.png'} height={500} width={320} objectFit="cover"/>
+          </motion.div>
+        </Grid>
+      </Grid>
     </motion.div>
   )
 }

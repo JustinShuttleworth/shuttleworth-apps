@@ -8,10 +8,16 @@ import Container from '@material-ui/core/Container';
 import {AnimatePresence, motion} from "framer-motion"
 import {listVariants} from "../animations";
 import HeaderSimpleCentered from "../components/headers/HeaderSimpleCentered";
+import {useInView} from "react-intersection-observer";
 
 
 const useStyles = makeStyles((theme) => ({
   section: {
+    display: "flex",
+    alignItems: "center",
+    height: '100vh'
+  },
+  root: {
     display: "flex",
     alignItems: "center",
     height: '100vh'
@@ -21,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
   const classes = useStyles();
+  const [ref, inView] = useInView({triggerOnce: true });
+  console.log(inView)
 
   return (
     <div>
@@ -39,7 +47,16 @@ export default function Home() {
       </motion.div>
 
         <Container maxWidth="lg">
-            <HeaderSimpleCentered />
+            {/*<motion.div*/}
+            {/*  ref={ref}*/}
+            {/*  className={classes.root}*/}
+            {/*  animate={inView ? "enter" : "initial"}*/}
+            {/*  initial="initial"*/}
+            {/*  exit={'exit'}*/}
+            {/*  variants={listVariants}*/}
+            {/*>*/}
+                <HeaderSimpleCentered />
+            {/*</motion.div>*/}
         </Container>
 
       <br/>
